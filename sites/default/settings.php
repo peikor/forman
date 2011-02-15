@@ -89,7 +89,7 @@
  *   $db_url = 'mysqli://username:password@localhost/databasename';
  *   $db_url = 'pgsql://username:password@localhost/databasename';
  */
-$db_url = 'mysqli://root:pc00@localhost/forman';
+$db_url = 'mysqli://forman:forman@localhost/forman';
 $db_prefix = '';
 
 /**
