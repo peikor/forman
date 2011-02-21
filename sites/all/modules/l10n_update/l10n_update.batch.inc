@@ -1,17 +1,23 @@
-<?php 
-// $Id: l10n_update.batch.inc,v 1.6.2.1 2010/09/19 15:56:45 jareyero Exp $
+<?php
+// $Id: l10n_update.batch.inc,v 1.6.2.3 2010/11/18 21:30:57 sutharsan Exp $
+
 /**
  * @file
- *   Reusable API for creating and running l10n update batches
+ *   Reusable API for creating and running l10n update batches.
  */
+
 include_once 'l10n_update.check.inc';
 
 /**
- * Create a batch to just download files
- * 
- * All sources must have a 'fileurl'
+ * Create a batch to just download files.
+ *
+ * @param $updates
+ *   Translations sources to be downloaded.
+ *   Note: All update sources must have a 'fileurl'.
+ * @return array
+ *   A batch definition for this download.
  */
-function l10n_update_batch_download($sources) {  
+function l10n_update_batch_download($updates) {
   foreach ($updates as $update) {
     $operations[] = array('_l10n_update_batch_download', array($update));
   }
@@ -19,11 +25,19 @@ function l10n_update_batch_download($sources) {
 }
 
 /**
- * Create a batch to just import files
- * 
- * All sources must have a 'filepath'
+ * Create a batch to just import files.
+ *
+ * All update sources must have a 'filepath'.
+ *
+ * @param $updates
+ *   Translations sources to be imported.
+ *   Note: All update sources must have a 'fileurl'.
+ * @param $import_mode
+ *   Import mode. How to treat existing and modified translations.
+ * @return array
+ *   A batch definition for this import.
  */
-function l10n_update_batch_import($sources, $import_mode) {
+function l10n_update_batch_import($updates, $import_mode) {
   foreach ($updates as $update) {
     $operations[] = array('_l10n_update_batch_import', array($update, $import_mode));
   }
@@ -31,12 +45,13 @@ function l10n_update_batch_import($sources, $import_mode) {
 }
 
 /**
- * Create a big batch for multiple projects and languages
- * 
+ * Create a big batch for multiple projects and languages.
+ *
  * @param $updates
- *   Array of update sources to be run
+ *   Array of update sources to be run.
  * @param $mode
- *   Import mode
+ *   Import mode. How to treat existing and modified translations.
+ * @return array
  */
 function l10n_update_batch_multiple($updates, $import_mode) {
   foreach ($updates as $update) {
@@ -47,7 +62,7 @@ function l10n_update_batch_multiple($updates, $import_mode) {
     else {
       $operations[] = array('_l10n_update_batch_import', array($update, $import_mode));
     }
-    // This one takes always parameters from results
+    // This one takes always parameters from results.
     $operations[] = array('_l10n_update_batch_history', array(NULL));
   }
   if (!empty($operations)) {
@@ -56,9 +71,18 @@ function l10n_update_batch_multiple($updates, $import_mode) {
 }
 
 /**
- * Create batch stub for this module
- * 
- * @return $batch
+ * Create batch stub for this module.
+ *
+ * @param $operations
+ *   Operations to perform in this batch.
+ * @return array
+ *   A batch definition:
+ *   - 'operations': Batch operations
+ *   - 'title': Batch title.
+ *   - 'init_message': Initial batch UI message.
+ *   - 'error_message': Batch error message.
+ *   - 'file': File containing callback function.
+ *   - 'finished': Batch completed callback function.
  */
 function _l10n_update_create_batch($operations = array()) {
   $t = get_t();
@@ -73,13 +97,13 @@ function _l10n_update_create_batch($operations = array()) {
   return $batch;
 }
 
-
 /**
- * Batch download file
- * 
+ * Batch process: Download a file.
+ *
  * @param $update
+ *   Source object to be downloaded.
  * @param $context
- * @return unknown_type
+ *   Batch context array.
  */
 function _l10n_update_batch_download($update, &$context) {
   $t = get_t();
@@ -89,11 +113,16 @@ function _l10n_update_batch_download($update, &$context) {
   }
   else {
     drupal_set_message($t('Failed download from %url', array('%url' => $update->fileurl)), 'error');
-  }  
+  }
 }
 
 /**
- * Batch process: Update the download history table
+ * Batch process: Update the download history table.
+ *
+ * @param $update
+ *   Source object to be updated.
+ * @param $context
+ *   Batch context array.
  */
 function _l10n_update_batch_history($update, &$context) {
   if ($update = _l10n_update_batch_param($update, $context)) {
@@ -103,15 +132,17 @@ function _l10n_update_batch_history($update, &$context) {
 }
 
 /**
- * Batch import translation file
- * 
- * This takes a file parameter or continues from previous batch which should have downloaded a file
- * 
+ * Batch process: Import translation file.
+ *
+ * This takes a file parameter or continues from previous batch
+ * which should have downloaded a file.
+ *
  * @param $file
- *   File to be imported. If empty, the file will be taken from $context['results']
- * @param $locale
+ *   File to be imported. If empty, the file will be taken from $context['results'].
  * @param $mode
+ *   Import mode. How to treat existing and modified translations.
  * @param $context
+ *   Batch context array.
  */
 function _l10n_update_batch_import($file, $mode, &$context) {
   $t = get_t();
@@ -119,7 +150,7 @@ function _l10n_update_batch_import($file, $mode, &$context) {
     if (l10n_update_source_import($file, $mode)) {
       $context['results'][] = $file;
       if ($file->type == 'download') {
-        drupal_set_message($t('Successfully downloaded and imported translation from %url', array('%url' => $file->fileurl)));        
+        drupal_set_message($t('Successfully downloaded and imported translation from %url', array('%url' => $file->fileurl)));
       }
       else {
         drupal_set_message($t('Imported translation file %name.', array('%name' => $file->filepath)));
@@ -132,7 +163,14 @@ function _l10n_update_batch_import($file, $mode, &$context) {
 }
 
 /**
- * Get parameter from results of previous batch if not present
+ * Batch process: Get parameter from results of previous batch if not present.
+ *
+ * @param $param
+ *   Batch parameters.
+ * @param $context
+ *   Batch context array.
+ * @return unknown_type
+ *   Batch results.
  */
 function _l10n_update_batch_param($param, &$context) {
   if (isset($param)) {
@@ -144,11 +182,12 @@ function _l10n_update_batch_param($param, &$context) {
 }
 
 /**
- * Batch finished callback, set result message
- * 
+ * Batch finished callback: Set result message.
+ *
  * @param $success
+ *   TRUE if batch succesfully completed.
  * @param $results
- * @return unknown_type
+ *   Batch results.
  */
 function _l10n_update_batch_finished($success, $results) {
   $t = get_t();

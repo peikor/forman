@@ -1,5 +1,6 @@
 <?php
-// $Id: l10n_update.locale.inc,v 1.2.2.3 2010/09/19 15:56:45 jareyero Exp $
+// $Id: l10n_update.locale.inc,v 1.2.2.4 2010/11/18 20:54:54 sutharsan Exp $
+
 /**
  * @file
  * Override part of locale.inc library so we can manage string status
@@ -7,9 +8,9 @@
 
 /**
  * Parses Gettext Portable Object file information and inserts into database
- * 
+ *
  * This is an improved version of _locale_import_po() to handle translation status
- * 
+ *
  * @param $file
  *   Drupal file object corresponding to the PO file to import
  * @param $langcode
@@ -18,6 +19,9 @@
  *   Should existing translations be replaced LOCALE_IMPORT_KEEP or LOCALE_IMPORT_OVERWRITE
  * @param $group
  *   Text group to import PO file into (eg. 'default' for interface translations)
+ *
+ * @return boolean
+ *   TRUE on success, FALSE on error. An error message is displayed.
  */
 function _l10n_update_locale_import_po($file, $langcode, $mode, $group = NULL) {
   // Try to allocate enough time to parse and import the data.
@@ -325,14 +329,14 @@ function _l10n_update_locale_import_one_string_db(&$report, $langcode, $source, 
   $lid = db_result(db_query("SELECT lid FROM {locales_source} WHERE source = '%s' AND textgroup = '%s'", $source, $textgroup));
 
   if (!empty($translation)) {
-     // Skip this string unless it passes a check for dangerous code.
-     // Text groups other than default still can contain HTML tags
-     // (i.e. translatable blocks).
-     if ($textgroup == "default" && !locale_string_is_safe($translation)) {
-       $report['skips']++;
-       $lid = 0;
-     }
-     elseif ($lid) {
+    // Skip this string unless it passes a check for dangerous code.
+    // Text groups other than default still can contain HTML tags
+    // (i.e. translatable blocks).
+    if ($textgroup == "default" && !locale_string_is_safe($translation)) {
+      $report['skips']++;
+      $lid = 0;
+    }
+    elseif ($lid) {
       // We have this source string saved already.
       db_query("UPDATE {locales_source} SET location = '%s' WHERE lid = %d", $location, $lid);
       // Check existing translation and status of the string

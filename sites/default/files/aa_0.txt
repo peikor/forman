@@ -1,0 +1,11 @@
+Ubercart crea un tipo de dato producto, pero también admite que incluyas nuevos tipos de datos, también crea una taxonomia llamada "catalog".
+
+Opciones del módulo ubercart:
+
+- Tasas fiscales y opciones de impuestos: Ahí incluimos los impuestos que queramos.
+- Opciones del gestor de precio: lo dejamos por defecto
+- Opciones de tienda: configuracino del pais, dirección, nombre...
+- Opciones de pais: ahí incluimos los paises donde vamos a trabajar
+- Opciones de pago: configuración de las opciones de pago, pasarela, paypal,...
+- Opciones de atributos: sirve para añadir caracteristicas nuevas a nuestros productos
+Productos->gestionar clases, para agregar nuevos productos al catálogo, luego podemos editarlos como cualquier dato y añadir o quitar campos con el cck.

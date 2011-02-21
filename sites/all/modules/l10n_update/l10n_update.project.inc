@@ -1,14 +1,15 @@
 <?php
-// $Id: l10n_update.project.inc,v 1.2.2.1 2010/02/18 17:45:46 jareyero Exp $
+// $Id: l10n_update.project.inc,v 1.2.2.3 2010/11/18 21:30:57 sutharsan Exp $
+
 /**
  * @file
  * Library for querying Drupal projects
- * 
- * Most code is taken from update module. We don't want to depend on it though as it may not be enabled. 
- * 
+ *
+ * Most code is taken from update module. We don't want to depend on it though as it may not be enabled.
+ *
  * For each project, the information about where to fetch translations may be specified in the info files
  * as follows:
- * 
+ *
  * - Localization server to be used for this project. Defaults to http://localize.drupal.org
  *   l10n server = localize.drupal.org
  *   (This should be enough if the server url, the one below, is defined somewhere else)
@@ -16,7 +17,7 @@
  * - Metadata information for the localization server
  *   l10n url = http://ftp.drupal.org/files/translations/l10n_server.xml
  *   (We can fetch *all* the information we need from this single url)
- * 
+ *
  * - Translation file URL template, will be used to build the file url to download
  *   l10n path = http://ftp.drupal.org/files/translations/%core/%project/%project-%release.%language.po
  *   (Alternatively you can use the %filename variable that will default to '%project-%release.%language.po')
@@ -24,6 +25,8 @@
 
 /**
  * Rebuild project list
+ *
+ * @return array
  */
 function l10n_update_build_projects() {
   module_load_include('inc', 'l10n_update');
@@ -71,6 +74,8 @@ function l10n_update_build_projects() {
 
 /**
  * Get update module's project list
+ *
+ * @return array
  */
 function l10n_update_project_list() {
   $projects = array();
@@ -85,7 +90,7 @@ function l10n_update_project_list() {
 
 /**
  * Refresh projects after enabling/disabling modules
- * 
+ *
  * When new projects are installed, set a batch for locale import / update
  */
 function l10n_update_project_refresh() {
@@ -107,9 +112,9 @@ function l10n_update_project_refresh() {
       if ($updates = l10n_update_build_updates($history, $available)) {
         module_load_include('batch.inc', 'l10n_update');
         // Filter out updates in other languages. If no languages, all of them will be updated
-        $updates = _l10n_update_prepare_updates($updates); 
+        $updates = _l10n_update_prepare_updates($updates);
         $batch = l10n_update_batch_multiple($updates, variable_get('l10n_update_import_mode', LOCALE_IMPORT_KEEP));
-        batch_set($batch);        
+        batch_set($batch);
       }
     }
   }
@@ -117,9 +122,12 @@ function l10n_update_project_refresh() {
 
 /**
  * Populate an array of project data.
- * 
+ *
  * Based on _update_process_info_list()
- * 
+ *
+ * @param $projects
+ * @param $list
+ * @param $project_type
  * @param $disabled
  *   TRUE to include disabled projects too
  */
@@ -180,6 +188,8 @@ function _l10n_update_project_info_list(&$projects, $list, $project_type, $disab
  * Given a $file object (as returned by system_get_files_database()), figure
  * out what project it belongs to.
  *
+ * @param $file
+ * @return string
  * @see system_get_files_database()
  */
 function l10n_update_get_project_name($file) {
@@ -196,11 +206,4 @@ function l10n_update_get_project_name($file) {
     $project_name = 'drupal';
   }
   return $project_name;
-}
-
-/***
- * Get available updates for a project
- */
-function l10n_update_project_updates($project) {
-  
 }

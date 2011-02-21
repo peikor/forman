@@ -1,8 +1,9 @@
 <?php
-// $Id: l10n_update.admin.inc,v 1.10.2.3 2010/09/15 09:25:18 jareyero Exp $
+// $Id: l10n_update.admin.inc,v 1.10.2.6 2010/11/18 20:54:54 sutharsan Exp $
+
 /**
  * @file
- *   Admin settings and update page
+ *   Admin settings and update page.
  */
 
 /**
@@ -39,7 +40,7 @@ include_once 'l10n_update.project.inc';
  * Page callback: Admin overview page.
  */
 function l10n_update_admin_overview() {
-  // For now we get package information provided by modules
+  // For now we get package information provided by modules.
   $projects = l10n_update_get_projects();
   $languages = l10n_update_language_list('name');
   if ($projects && $languages) {
@@ -61,6 +62,13 @@ function l10n_update_admin_overview() {
  * @todo selectable packages
  * @todo check language support in server
  * @todo check file update dates
+ *
+ * @param $form_state
+ *   Form states array.
+ * @param $projects
+ *   @todo $projects are not used in the form.
+ * @param $updates
+ *   Updates to be displayed in the form.
  */
 function l10n_update_admin_import_form($form_state, $projects, $updates) {
   //module_load_include('inc', 'l10n_update');
@@ -83,7 +91,7 @@ function l10n_update_admin_import_form($form_state, $projects, $updates) {
 
     );
     $form['mode'] = array('#type' => 'radios',
-      '#title' => t('Mode'),
+      '#title' => t('Update mode'),
       '#default_value' => variable_get('l10n_update_import_mode', LOCALE_IMPORT_KEEP),
       '#options' => _l10n_update_admin_import_options(),
     );
@@ -113,7 +121,7 @@ function l10n_update_admin_import_form_submit($form, $form_state) {
     if ($projects && $updates) {
       module_load_include('batch.inc', 'l10n_update');
       // Filter out updates in other languages. If no languages, all of them will be updated
-      $updates = _l10n_update_prepare_updates($updates, NULL, $languages); 
+      $updates = _l10n_update_prepare_updates($updates, NULL, $languages);
       $batch = l10n_update_batch_multiple($updates, $mode);
       batch_set($batch);
     }
@@ -142,7 +150,7 @@ function l10n_update_admin_settings_form() {
     '#options' => _l10n_update_admin_check_options(),
   );
   $form['l10n_update_import_mode'] = array('#type' => 'radios',
-    '#title' => t('Import mode'),
+    '#title' => t('Update mode'),
     '#default_value' => variable_get('l10n_update_import_mode', LOCALE_IMPORT_KEEP),
     '#options' => _l10n_update_admin_import_options(),
   );
@@ -168,9 +176,21 @@ function l10n_update_admin_settings_form() {
     '#title' => t('Store downloaded files'),
     '#type' => 'textfield',
     '#default_value' => variable_get('l10n_update_download_store', ''),
-    '#description' => t('Local directory, relative to your Drupal install, for storing downloaded files so they can be reused by other installs. If left empty the downloaded translation will not be saved.'),
+    '#description' => t('A path relative to the Drupal installation directory where translation files will be stored, e.g. sites/all/translations. Saved translation files can be reused by other installations. If left empty the downloaded translation will not be saved.'),
   );
   return system_settings_form($form);
+}
+
+/**
+ * Additional validation handler for update settings.
+ *
+ * Check for existing files directory and creates one when required.
+ */
+function l10n_update_admin_settings_form_validate($form, &$form_state) {
+  $form_values = $form_state['values'];
+  if ( ! empty($form_values['l10n_update_download_store'])) {
+    file_check_directory($form_values['l10n_update_download_store'], FILE_CREATE_DIRECTORY, 'l10n_update_download_store');
+  }
 }
 
 /**
@@ -179,7 +199,8 @@ function l10n_update_admin_settings_form() {
  * The import options of the Locale module are used but the UI text is altered
  * to suit the Localization update cases.
  *
- * @return Keyed array of strings.
+ * @return
+ *   Keyed array of import options.
  */
 function _l10n_update_admin_import_options() {
   return array(
@@ -191,7 +212,8 @@ function _l10n_update_admin_import_options() {
 /**
  * Get array of check options.
  *
- * @return Keyed array of strings.
+ * @return
+ *   Keyed array of source download options.
  */
 function _l10n_update_admin_check_options() {
   return array(
@@ -209,7 +231,7 @@ function _l10n_update_admin_check_options() {
  * @params array $languages
  *   Languages listed.
  * @params array $history
- *   Project translation history
+ *   Project translation history.
  * @params array $available
  *   Available translation releases.
  * @params array $updates
@@ -289,11 +311,7 @@ function theme_l10n_update_project_status($projects, $languages, $history, $avai
  * Format tag and release date.
  *
  * @param object $release
- *   Release data:
- *     $release->filename
- *     $release->timestamp
- *     $release->fileurl
- *     $release->filepath
+ *   Source file data.
  * @return string
  *   HTML output.
  */
@@ -319,9 +337,9 @@ function theme_l10n_update_release($release) {
  * Format version status with icon.
  *
  * @param string $status
- *   Version status.
+ *   Version status: 'ok', 'update', 'unknown'.
  * @param string $type
- *   Update type.
+ *   Update type: 'download', 'localfile'.
  *
  * @return sting
  *   HTML output.

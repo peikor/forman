@@ -1,5 +1,5 @@
-<?php 
-// $Id: l10n_update.drush.inc,v 1.1.2.1 2010/09/19 16:25:57 jareyero Exp $
+<?php
+// $Id: l10n_update.drush.inc,v 1.1.2.2 2010/11/18 20:54:54 sutharsan Exp $
 
 /**
  * @file
@@ -33,7 +33,7 @@ function l10n_update_drush_command() {
 
 /**
  * Drush command callback: update translations
- * 
+ *
  * @param $count
  *   Number of package translations to check
  * @param $limit
