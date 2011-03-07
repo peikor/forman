@@ -1,0 +1,23 @@
+<?php
+// $Id: gallery_assist_views.module,v 1.3 2010/09/09 04:50:12 jcmc Exp $
+
+/**
+ * @file
+ */
+
+/**
+ * Implementation of hook_init().
+ */
+function gallery_assist_views_init() {
+
+}
+
+/**
+ * Implementation of hook_views_api().
+ */
+function gallery_assist_views_views_api() {
+  return array(
+    'api' => 2,
+    'path' => drupal_get_path('module', 'gallery_assist_views') .'/views',
+  );
+}

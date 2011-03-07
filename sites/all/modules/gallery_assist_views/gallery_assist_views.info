@@ -1,0 +1,12 @@
+; $Id: gallery_assist_views.info,v 1.3 2010/09/09 04:50:12 jcmc Exp $
+name = Gallery Assist Views
+description = Extends Gallery Assist.
+package = "Media"
+core = 6.x
+
+; Information added by drupal.org packaging script on 2010-09-09
+version = "6.x-2.0-beta1"
+core = "6.x"
+project = "gallery_assist_views"
+datestamp = "1284010607"
+

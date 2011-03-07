@@ -1,0 +1,127 @@
+.panels-flexible-region {
+  padding: 0;
+}
+
+.panels-flexible-region-inside {
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+}
+
+.panels-flexible-region-inside-first {
+  padding-left: 0;
+}
+
+.panels-flexible-region-inside-last {
+  padding-right: 0;
+}
+
+.panels-flexible-column {
+  padding: 0;
+}
+
+.panels-flexible-column-inside {
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+}
+
+.panels-flexible-column-inside-first {
+  padding-left: 0;
+}
+
+.panels-flexible-column-inside-last {
+  padding-right: 0;
+}
+
+.panels-flexible-row {
+  padding: 0 0 0.5em 0;
+  margin: 0;
+}
+
+.panels-flexible-row-last {
+  padding-bottom: 0;
+}
+
+.panels-flexible-column-principal-main {
+  float: left;
+  width: 99.0000%;
+}
+
+.panels-flexible-principal-inside {
+  padding-right: 0px;
+}
+
+.panels-flexible-principal {
+  width: auto;
+}
+
+.panels-flexible-region-principal-top_izquierda {
+  float: left;
+  width: 59.1324%;
+}
+
+.panels-flexible-region-principal-center {
+  float: left;
+  width: 39.8676%;
+}
+
+.panels-flexible-row-principal-main-row-inside {
+  padding-right: 0px;
+}
+
+.panels-flexible-region-principal-centro_medio {
+  float: left;
+  width: 59.1325%;
+}
+
+.panels-flexible-region-principal-centro_derecha {
+  float: left;
+  width: 39.8675%;
+}
+
+.panels-flexible-row-principal-1-inside {
+  padding-right: 0px;
+}
+
+.panels-flexible-region-principal-bottom_izquierda {
+  float: left;
+  width: 33.0092%;
+}
+
+.panels-flexible-region-principal-bottom_centro {
+  float: left;
+  width: 33.0056%;
+}
+
+.panels-flexible-region-principal-bottom_derecha {
+  float: left;
+  width: 32.9851%;
+}
+
+.panels-flexible-row-principal-2-inside {
+  padding-right: 0px;
+}
+
+.panels-flexible-region-principal-fotter_izq {
+  float: left;
+  width: 25.0116%;
+}
+
+.panels-flexible-region-principal-fotter_centro2 {
+  float: left;
+  width: 24.8438%;
+}
+
+.panels-flexible-region-principal-fotter_centro1 {
+  float: left;
+  width: 24.8483%;
+}
+
+.panels-flexible-region-principal-fotter_der {
+  float: left;
+  width: 24.2962%;
+}
+
+.panels-flexible-row-principal-3-inside {
+  padding-right: 0px;
+}
+
