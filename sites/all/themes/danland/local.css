@@ -1,0 +1,102 @@
+/* $Id: local_sample.css,v 1.1 2010/04/08 17:16:16 danprobo Exp $ */
+
+/****************************/
+/* LOCAL CSS                */
+/****************************/
+
+/* Put your custom css and css overrides in this file and  */ 
+/* rename it local.css.  By restricting your css changes   */
+/* to local.css, your changes will not be overwritten when */
+/* upgrading to a new version of this theme.               */
+
+/* Steps to activate local.css:                       */
+/* 1. Add your custom css to this file                */
+/* 2. Rename this file to local.css                   */
+/* 3. Uncomment (remove leading semicolon from ) the  */ 
+/*    following line in your theme's .info file:      */
+/*    ;stylesheets[all][] = local.css                 */
+/* 4. Clear cached data at admin/settings/performance */
+.column.A li a 
+	{
+	color: #fff;
+	}
+
+.column.B li a 
+	{
+    color: #fff;
+	}
+.column.C li a
+	{
+    color: #fff;
+	}
+.column.A li a:hover
+	{
+	color: #fff;
+	}
+
+.column.B li a:hover 
+	{
+    color: #fff;
+	}
+.column.C li a:hover
+	{
+    color: #fff;
+	}
+ul li, ul.menu li, .item-list ul li, li.leaf
+	{
+	text-align: justify;
+	padding: none;
+	}
+tr.odd td, tr.even td
+	{
+    padding: 0.2em;
+	text-align: justify;
+	}
+.panels-flexible-region-principal-fotter_centro2 {
+    background: url("./images/degradado.png") repeat-x scroll 0 0% transparent;
+}
+.panels-flexible-region-principal-f5_c1 {
+	background: url("./images/degradado.png") repeat-x scroll 0 0% transparent;
+}
+.panels-flexible-region-principal-f3_c2 .inside {
+   background: url("./images/degradado.png") repeat-x scroll 0 0% transparent;
+}
+.panels-flexible-region-principal-f2_c2 .inside {
+    background: url("./images/degradado.png") repeat-x scroll 0 0% transparent;
+}
+.pane-block-10 {
+background: url("./images/degradado.png") repeat-x scroll 0 0% transparent;
+}
+.pane-block-3,.pane-block-4 , .pane-block-5{
+background: url("./images/degradado.png") repeat-x scroll 0 0% transparent;
+}
+.pane-ultimos-blogs{
+background: url("./images/degradado.png") repeat-x scroll 0 0% transparent;
+}
+#bottom-wrapper {
+    background: none repeat scroll 0 0 #333333;
+	color: #fff;
+}
+#bottom-wrapper h2 {
+    font-family: Tahoma;
+    font-size: 12px;
+}
+#block-block-9 a
+	{
+	color: white;
+	}
+#bottom-wrapper.in4 .column 
+	 {
+    padding-left: 30px;
+    width: 21%;
+	}
+ #bottom-wrapper .column.D
+	 {
+    padding-left: 0px;
+    width: 21%;
+	}
+.view.view-og-misfotos.view-id-og_misfotos.view-display-id-page_1.view-dom-id-1.views-processed td
+	{
+	background: url("./images/degradado.png") repeat-x scroll 0 0% transparent;
+	padding-bottom: 15px;
+	}

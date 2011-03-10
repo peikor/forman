@@ -111,7 +111,7 @@
 			<?php if ($mission) : ?><div id="mission-db"><?php print $mission; ?></div><?php endif; ?>
 			<?php if ($content_top) : ?><div class="content-top"><?php print $content_top; ?></div>
 			<?php endif; ?>
-			<?php if (!$is_front) print $breadcrumb; ?>
+			<?php //if (!$is_front) print $breadcrumb; ?>
 			<?php if ($show_messages) { print $messages; }; ?>
 			<?php if ($tabs) : ?><div class="tabs"><?php print $tabs; ?></div><?php endif; ?>
 			<?php if ($title) : ?><h1 class="title"><?php print $title; ?></h1><?php endif; ?>
@@ -196,7 +196,7 @@
 </div> <!-- end footer wrapper -->
 
 <div style="clear:both"></div>
-<div id="notice"><p>Theme by <a href="http://www.danetsoft.com">Danetsoft</a> and <a href="http://www.danpros.com">Danang Probo Sayekti</a> inspired by <a href="http://www.maksimer.no">Maksimer</a></p></div>
+<div id="notice"></div>
 <?php print $closure; ?>
 </body>
 </html>

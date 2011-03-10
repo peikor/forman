@@ -5,7 +5,7 @@
 }
 
 .views-exposed-form .views-exposed-widget .form-submit {
-  margin-top: 1.6em;
+  margin-top: 0px;
 }
 
 .views-exposed-form .form-item,
@@ -83,7 +83,8 @@ div.view:hover div.views-hide {
   position: absolute;
   z-index: 200;
 }
-
+.views-field.views-field-teaser{background: none repeat scroll 0 0 transparent;border: medium none;}
+.views-field.views-field-field-descripcionevento-value{background: none repeat scroll 0 0 transparent;border: medium none;}
 /* don't do this one in IE */
 div.view:hover div.views-hide {
   margin-top: -1.5em;
@@ -92,5 +93,6 @@ div.view:hover div.views-hide {
 /* Remove the border on tbody that system puts in */
 .views-view-grid tbody {
   border-top: none;
+  text-align:justify;
 }
 

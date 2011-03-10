@@ -4,7 +4,7 @@
 
 body {
 font-size: 84%;
-font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: Tahoma;
 color: #000;
 margin: 0;
 padding: 0;
@@ -12,26 +12,26 @@ line-height: 1.5em;
 }
 
 h1,h2,h3,h4,h5,h6 {
-font-family: Arial, Helvetica, sans-serif;
+font-family: Tahoma;
 }
 
 #nav li a{
-font-family: Arial, Helvetica, sans-serif;
+font-family: Tahoma;
 }
 
 #superfish .menu a,
 #superfish .menu a:visited  {
-font-family: Arial, Helvetica, sans-serif;
+font-family: Tahoma;
 }
 
 a:link {
-color: #005a8c;/*#e87e17*/
+color: green;/*#e87e17*/
 text-decoration: none;
 font-weight: bold;
 }
 
 a:visited {
-color: #005a8c;/*#e87e17*/
+color: green;/*#e87e17*/
 text-decoration: none;
 font-weight: bold;
 }

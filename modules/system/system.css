@@ -11,7 +11,7 @@ th.active img {
 }
 tr.even, tr.odd {
   background-color: #eee;
-  border-bottom: 1px solid #ccc;
+  /*border-bottom: 1px solid #ccc;*/
   padding: 0.1em 0.6em;
 }
 tr.drag {
@@ -27,7 +27,7 @@ td.checkbox, th.checkbox {
   text-align: center;
 }
 tbody {
-  border-top: 1px solid #ccc;
+  /*border-top: 1px solid #ccc;*/
 }
 tbody th {
   border-bottom: 1px solid #ccc;
@@ -35,7 +35,7 @@ tbody th {
 thead th {
   text-align: left; /* LTR */
   padding-right: 1em; /* LTR */
-  border-bottom: 3px solid #ccc;
+  /*border-bottom: 3px solid #ccc;*/
 }
 
 /*

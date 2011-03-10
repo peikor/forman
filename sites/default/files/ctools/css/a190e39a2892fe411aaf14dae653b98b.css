@@ -1,0 +1,131 @@
+.panels-flexible-region {
+  padding: 0;
+}
+
+.panels-flexible-region-inside {
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+}
+
+.panels-flexible-region-inside-first {
+  padding-left: 0;
+}
+
+.panels-flexible-region-inside-last {
+  padding-right: 0;
+}
+
+.panels-flexible-column {
+  padding: 0;
+}
+
+.panels-flexible-column-inside {
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+}
+
+.panels-flexible-column-inside-first {
+  padding-left: 0;
+}
+
+.panels-flexible-column-inside-last {
+  padding-right: 0;
+}
+
+.panels-flexible-row {
+  padding: 0 0 0.5em 0;
+  margin: 0;
+}
+
+.panels-flexible-row-last {
+  padding-bottom: 0;
+}
+
+.panels-flexible-column-principal-main {
+  float: left;
+  width: 99.0000%;
+}
+
+.panels-flexible-principal-inside {
+  padding-right: 0px;
+}
+
+.panels-flexible-principal {
+  width: auto;
+}
+
+.panels-flexible-region-principal-center {
+  float: left;
+  width: 99.0000%;
+}
+
+.panels-flexible-row-principal-main-row-inside {
+  padding-right: 0px;
+}
+
+.panels-flexible-region-principal-f {
+  float: left;
+  width: 24.9350%;
+}
+
+.panels-flexible-region-principal-centro_medio {
+  float: left;
+  width: 24.5231%;
+}
+
+.panels-flexible-region-principal-centro_derecha {
+  float: left;
+  width: 24.5507%;
+}
+
+.panels-flexible-region-principal-f2_c2 {
+  float: left;
+  width: 24.9913%;
+}
+
+.panels-flexible-row-principal-1-inside {
+  padding-right: 0px;
+}
+
+.panels-flexible-region-principal-bottom_centro {
+  float: left;
+  width: 74.0124%;
+}
+
+.panels-flexible-region-principal-f3_c2 {
+  float: left;
+  width: 24.9876%;
+}
+
+.panels-flexible-row-principal-2-inside {
+  padding-right: 0px;
+}
+
+.panels-flexible-region-principal-fotter_centro2 {
+  float: left;
+  width: 74.0671%;
+}
+
+.panels-flexible-region-principal-fotter_der {
+  float: left;
+  width: 24.9329%;
+}
+
+.panels-flexible-row-principal-3-inside {
+  padding-right: 0px;
+}
+
+.panels-flexible-region-principal-f5_c1 {
+  float: left;
+  width: 74.1493%;
+}
+
+.panels-flexible-region-principal-f5_c2 {
+  float: left;
+  width: 24.8507%;
+}
+
+.panels-flexible-row-principal-4-inside {
+  padding-right: 0px;
+}
+
